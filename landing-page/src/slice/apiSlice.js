@@ -12,7 +12,7 @@ export const getFetch = createAsyncThunk("get-users/getFetch", async() =>{
 // console.log("api",FETCH_API)
 export const apiSlice = createSlice({
   name: "api",
-  initialState :  { name:"", email:"", password:"", confirmpassword: "" },
+  initialState :  { id: "", name:"", email:"", password:"", confirmpassword: "", data: [], age: "", dob: "", gender: "", phone: "" },
   
   reducers: {
 
@@ -23,7 +23,7 @@ export const apiSlice = createSlice({
       const data = state.data
 
       axios.post(
-        "http://127.0.0.1:3000/get-users",data
+        "http://127.0.0.1:3000/user",data
     
       );
       state.data.push(data)
@@ -34,29 +34,12 @@ export const apiSlice = createSlice({
      }
 
     },
-    fetchuser:(state, action) => {
-
-      try{
-        console.log(action)
-      state = action.payload;
-      const data = {
-        image : state.image
-      };
-
-        axios.post(
-          "http://127.0.0.1:3000/profile-upload-single",data
-      
-        );
-
-      }catch (err) {
-        // console.log(err.message);
-      }
-
-    }, 
+    
     login: (state, action) => {
         try{
             state = action.payload;
             const data = {
+                id: state.id,
                 email: state.email,
                 password: state.password 
             }
@@ -69,7 +52,7 @@ export const apiSlice = createSlice({
           localStorage.setItem("key", response.data.token);
           const token = localStorage.getItem("key");
                     if(token){
-                        window.location.href ='/display'
+                        window.location.href =`/home`
                         // console.log(res.data._token)
                     }else{
                         return false
@@ -107,7 +90,7 @@ export const apiSlice = createSlice({
             if (error.response) {
               // Request made and server responded
               alert(error.response.data.msg);
-              window.location.href = '/signup'
+              window.location.href = '/'
               //   setSubmitted(false);
               //   navigate("/signup")
 
@@ -147,7 +130,9 @@ export const apiSlice = createSlice({
             email: state.email,
             password: state.password,
             phone: state.phone,
-            address: state.address
+            gender: state.gender, 
+            age: state.age, 
+
           }
           // console.log("con",data.name, data.id)
           axios.get(`http://127.0.0.1:3000/get-users/${data.id}`)

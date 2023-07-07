@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar, Button, Card, Grid, Typography } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import Header from '../components/Header'
+import axios from "axios";
 
 const Home = () => {
+  const [data, setData] = useState("")
+
+  useEffect((e) => {
+     
+      axios.get(`http://127.0.0.1:3000/user`).then((response) => {
+        setData(response);
+        console.log(response);
+      });
+    },
+    []
+  );
+
   return (
     <Grid xs={12} >
       <Card sx={{
@@ -34,8 +47,9 @@ const Home = () => {
 
           <Grid xs={6} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
             <Avatar alt="Remy Sharp" style={{ height: '220px', width: '220px' }} sx={{ ml: '60px' }} src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} />
+            {data && 
             <Grid alignItems={'left'}>
-
+              
               <Typography marginTop={2} variant='h3'>
                 Username:
                 <IconButton aria-label="delete" size="large">
@@ -73,6 +87,7 @@ const Home = () => {
                 </IconButton>
               </Typography>
             </Grid>
+}
           </Grid>
 
         </Card>
