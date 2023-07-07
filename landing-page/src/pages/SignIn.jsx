@@ -43,9 +43,7 @@ const SignIn = () => {
   }
  
   return (
-    <Grid display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} marginTop={15}>
-      <Card sx={{ width: 400, boxShadow: '15px 15px 5px #ccc' }} >
-        <Grid xs={8} sx={{ maxWidth: 380, borderRadius: 10 }} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+        <Grid sx={{ minWidth: 300, borderRadius: 10 }} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
           <Typography marginTop={3} variant="h4" component="h1">
             Login
           </Typography>
@@ -78,8 +76,6 @@ const SignIn = () => {
             Dont have Account - <NavLink to={'/'}>SignUp</NavLink>
           </Typography>
         </Grid>
-      </Card>
-    </Grid>
   )
 }
 

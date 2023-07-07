@@ -96,7 +96,7 @@ export const apiSlice = createSlice({
             console.log(response);
             if (response.status === 201) {
                 // console.log(window)
-                alert("user registered successfully!!Login into th user")
+                alert("user registered successfully!!Login into the user")
                 window.location.href = '/signin'
               //   setSubmitted(true);
               //   navigate("/signin");

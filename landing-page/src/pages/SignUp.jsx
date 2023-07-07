@@ -52,26 +52,13 @@ const SignUp = () => {
   };
 
   // Showing success message
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: submitted ? "" : "none",
-        }}
-      >
-        <h1>User {inputs.name} successfully registered!!</h1>
-      </div>
-    );
-  };
+
 
   // Showing error message if error is true
 
 
   return (
-    <Grid display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} marginTop={15}>
-      <Card sx={{ width: 400, boxShadow: '15px 15px 5px #ccc' }} >
-        <Grid xs={8} sx={{ maxWidth: 380, borderRadius: 10 }} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+        <Grid sx={{ minWidth: 300, borderRadius: 10 }} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
           <Typography marginTop={3} variant="h4" component="h1">
             Register
           </Typography>
@@ -100,6 +87,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
               <TextField
+                required
                 label="Password"
                 type="password"
                 name="password"
@@ -110,6 +98,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
               <TextField
+                required
                 error={error}
                 label="Confirm Password"
                 type="password"
@@ -128,8 +117,6 @@ const SignUp = () => {
             Already have Account - <NavLink to={'/signin'}>SignIn</NavLink>
           </Typography>
         </Grid>
-      </Card>
-    </Grid>
   )
 }
 
