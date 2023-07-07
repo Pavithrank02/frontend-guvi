@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
-import { Button, Grid, Link, Typography } from '@mui/material'
+import { NavLink } from 'react-router-dom';
+import { Button, Grid, Typography } from '@mui/material'
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import { register } from "../slice/apiSlice";
@@ -27,7 +28,13 @@ const SignUp = () => {
 
     if (inputs.name === "" || inputs.email === "" || inputs.password === "" || inputs.confirmpassword === "") {
       setError(true);
-    } else {
+    }
+    else if (inputs.password !== inputs.confirmpassword) {
+      setError(true);
+
+    }
+
+    else {
       dispatch(register({
         name: inputs.name,
         email: inputs.email,
@@ -59,26 +66,11 @@ const SignUp = () => {
   };
 
   // Showing error message if error is true
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-        }}
-      >
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
+
 
   return (
     <Grid display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} marginTop={15}>
       <Card sx={{ width: 400, boxShadow: '15px 15px 5px #ccc' }} >
-        <div className="messages">
-          {errorMessage()}
-          {successMessage()}
-        </div>
         <Grid xs={8} sx={{ maxWidth: 380, borderRadius: 10 }} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
           <Typography marginTop={3} variant="h4" component="h1">
             Register
@@ -88,6 +80,7 @@ const SignUp = () => {
 
             <Grid display={'flex'} flexDirection={'column'} padding={2}>
               <TextField
+                required={'field shouldnt be empty'}
                 label="Username"
                 type="name"
                 name="name"
@@ -97,6 +90,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
               <TextField
+                required={'field shouldnt be empty'}
                 label="Email"
                 type="email"
                 name="email"
@@ -116,6 +110,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
               <TextField
+                error={error}
                 label="Confirm Password"
                 type="password"
                 name="confirmpassword"
@@ -123,12 +118,14 @@ const SignUp = () => {
                 margin={'dense'}
                 value={inputs.confirmpassword}
                 onChange={handleChange}
+                helperText={error ? "Password doesnt match." : ""}
               />
+
               <Button size="large" variant="contained" type='submit'>SignUp</Button>
             </Grid>
           </form>
           <Typography variant="body" component="body" marginBottom={2}>
-            Already have Account - <Link>SignIn</Link>
+            Already have Account - <NavLink to={'/signin'}>SignIn</NavLink>
           </Typography>
         </Grid>
       </Card>

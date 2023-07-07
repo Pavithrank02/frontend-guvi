@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from "../slice/apiSlice";
 import { Button, Grid, Link, Typography } from '@mui/material'
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 
 const SignIn = () => {
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [inputs, setInputs] = useState({
     name: "", email: "", password: "", confirmpassword: ""
   })
@@ -18,8 +22,8 @@ const SignIn = () => {
 
     }
         dispatch(login({
-          email : email,
-          password : password
+          email : inputs.email,
+          password : inputs.password
         }))
         
         setInputs({
@@ -71,7 +75,7 @@ const SignIn = () => {
             </Grid>
           </form>
           <Typography variant="body" component="body" marginBottom={2}>
-            Already have Account - <Link>SignIn</Link>
+            Dont have Account - <NavLink to={'/'}>SignUp</NavLink>
           </Typography>
         </Grid>
       </Card>

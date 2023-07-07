@@ -52,56 +52,6 @@ export const apiSlice = createSlice({
         // console.log(err.message);
       }
 
-
-      // console.log(type)
-      // console.log(payload)
-
-      // // console.log(action)
-      //   // const sD = state.data.push( action.payload.data.data)
-      //   // console.log("dd",sD)
-
-      //   // console.log("dis", action);
-
-      //   switch (type) {
-
-      //     case FETCH_API: {
-      //       console.log("dfd",payload)
-      //       return payload;
-        
-      //     }
-      //     default:
-      //       return fetch;
-      //   }
-        // console.log("action",state, "dd",action)
-        // builder.addCase(fetchU.pending, (state, action) => {
-        //   state.isLoading =  true
-        // })
-        // builder.addCase(fetchU.fulfilled, (state, action) => {
-        //   state.isLoading =  false
-        //   state.data = action.payload
-        // })
-        // builder.addCase(fetchU.rejected, (state, action) => {
-        //   state.isLoading =  false
-        // })
-      //   state = action.payload;
-      //       const data = {
-      //         data: state.data 
-      //       }
-      //   axios
-      // .get("http://127.0.0.1:3000/get-users")
-      // .then(response => {
-      //   console.log("ss", response)
-      //   // state.data.push(response)
-      //   response.data.data.map((user => user));
-      //   // return response
-        
-      //   // console.log(state.data)
-      //   // console.log(response.data)
-      
-      //   // Handle response
-      // })
-
-
     }, 
     login: (state, action) => {
         try{
@@ -138,10 +88,7 @@ export const apiSlice = createSlice({
             name: state.name,
             email: state.email,
             password : state.password,
-            gender: state.gender,
-            phone: state.phone,
-            image: state.image,
-            address:state.address
+            confirmpassword: state.confirmpassword
         }
         axios
             .post("http://127.0.0.1:3000/register",  data )
