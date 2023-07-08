@@ -46,12 +46,12 @@ const Home = () => {
           borderRadius: 10,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
         }}>
           <Grid>
             <Header />
           </Grid>
-          {data && <Grid xs={6} display={'flex'} flexDirection={'row'} justifyContent={'space-evenly'} alignItems={'center'}>
+          {data && <Grid xs={6} display={'flex'} flexDirection={'row'} justifyContent={'space-evenly'} alignItems={'center'} marginTop={2}>
             <Avatar alt="Remy Sharp" style={{ height: '220px', width: '220px' }} sx={{ ml: '60px' }} src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} />
               <UserInfo data={data}/>
           </Grid> 

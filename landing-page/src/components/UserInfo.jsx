@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, Button, Card, Grid, Typography } from '@mui/material'
+import { Avatar, Button, Card, Grid, TextField, Typography } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from "axios";
@@ -30,24 +30,24 @@ const UserInfo = (props) => {
 
   return (
 
-    <Grid alignItems={'left'}>
+    <Grid >
       {data &&
         Object.entries(obj).map(([key, value]) => {
           console.log(`${key} ${value}`); // "a 5", "b 7", "c 9"
           return (
 
-            <Grid xs={8} display={'flex'} flexDirection={'row'} justifyContent={'space-evenly'}>
-              <Grid xs={2} sx={{ textTransform: 'capitalize' }}>
+            <Grid xs={8} display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
+              <Grid xs={4} sx={{ textTransform: 'capitalize' }} marginTop={2}>
                 <Typography sx={{ fontWeight: 'bold' }} variant='h5'>
                   {key}:
                 </Typography>
               </Grid>
-              <Grid xs={4}>
-                <Typography  variant='h6'>
-                  {value}
-                </Typography>
-              </Grid>
-              <Grid xs={2}>
+              <Grid xs={4} display={'flex'} flexDirection={'row'} >
+                <TextField
+                  fullWidth
+                  label={value}
+                  id="fullWidth"
+                />
                 <ModalUI />
               </Grid>
             </Grid>
