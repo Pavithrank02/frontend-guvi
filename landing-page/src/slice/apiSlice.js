@@ -46,9 +46,9 @@ export const apiSlice = createSlice({
             axios
         .post("http://127.0.0.1:3000/login", data)
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           alert("login success")
-          // console.log(response.data.token);
+          console.log(response.user);
           localStorage.setItem("key", response.data.token);
           const token = localStorage.getItem("key");
                     if(token){
