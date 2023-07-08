@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, Button, Card, Grid, TextField, Typography } from '@mui/material'
-import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
+import { Grid, TextField, Typography } from '@mui/material'
 import axios from "axios";
 import ModalUI from './Modal';
 
