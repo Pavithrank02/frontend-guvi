@@ -44,7 +44,6 @@ const SignUp = () => {
       // .then(res => { // then print response status
       //     console.warn(res);
       // })
-      // navigate("/signin")
       setError(false);
     }
   };
